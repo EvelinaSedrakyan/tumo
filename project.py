@@ -20,6 +20,7 @@ if template == "1":
     adjective1 = input()
     print("Type another adjective:")
     adjective2 = input()
+    
     print("Type noun:")
     noun1 = input()
     print("Type color:")
