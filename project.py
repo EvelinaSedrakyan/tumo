@@ -2,7 +2,6 @@ import random
 
 print("Welcome to Mad Libs!!")
 
-# ----- TEMPLATE CHOICE WITH ERROR HANDLING -----
 while True:
     print("\nChoose a story template:")
     print("1 - Hospital")
@@ -11,15 +10,13 @@ while True:
 
     template = input("Enter 1, 2 or 3: ")
 
-    if template == "1" or template == "2" or template == "3":
+    if template in ("1", "2", "3"):
         break
     else:
         print("Invalid choice. Try again.")
 
-# ----- RANDOM CONFIRMATION (requirement satisfied) -----
 print("\nYour lucky number today is:", random.randint(1, 10))
 
-# ----- SIMPLE INPUT CHECK FUNCTION -----
 def safe_input(text):
     value = input(text)
     while value.strip() == "":
@@ -27,9 +24,15 @@ def safe_input(text):
         value = input(text)
     return value
 
-# ----- TEMPLATE 1 (Hospital) -----
+def safe_int(text):
+    while True:
+        try:
+            return int(input(text))
+        except ValueError:
+            print("Please enter a valid number.")
+
 if template == "1":
-    number = safe_input("Type number: ")
+    number = safe_int("Type number: ")
     time = safe_input("Type measure of time: ")
     transport = safe_input("Type mode of transportation: ")
     adjective1 = safe_input("Type adjective: ")
@@ -40,7 +43,6 @@ if template == "1":
     print("It was about", number, time, "ago when I arrived at the hospital in a", transport + ".")
     print("The hospital is a/an", adjective1, "place with many", adjective2, noun1 + ".")
 
-# ----- TEMPLATE 2 (Camping) -----
 elif template == "2":
     name = safe_input("Type a person’s name: ")
     noun = safe_input("Type a noun: ")
@@ -52,7 +54,6 @@ elif template == "2":
     print("I packed my bag with", noun + ".")
     print("I am very", adjective, "to", verb, "in the woods.")
 
-# ----- TEMPLATE 3 (Fantasy Letter) -----
 else:
     name = safe_input("Type a person’s name: ")
     adjective = safe_input("Type an adjective: ")
